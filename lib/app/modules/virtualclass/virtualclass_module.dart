@@ -5,22 +5,23 @@ import 'package:suapifba/app/modules/virtualclass/virtualclass_controller.dart';
 import 'package:suapifba/app/modules/virtualclass/virtualclass_page.dart';
 import 'package:suapifba/app/shared/repositories/period_repository.dart';
 
-class VirtualClassModule extends ChildModule {
+class VirtualClassModule extends Module {
   @override
-  List<Bind> get binds => [
-        Bind((i) => PeriodRepository()),
-        Bind((i) => ListVirtualClassRepository()),
-        Bind((i) => VirtualClassRepository()),
-        Bind(
-          (i) => VirtualClassController(
-            i.get<PeriodRepository>(),
-            i.get<ListVirtualClassRepository>(),
-            i.get<VirtualClassRepository>(),
-          ),
-        )
-      ];
+  final List<Bind> binds = [
+    Bind((i) => PeriodRepository()),
+    Bind((i) => ListVirtualClassRepository()),
+    Bind((i) => VirtualClassRepository()),
+    Bind(
+      (i) => VirtualClassController(
+        i.get<PeriodRepository>(),
+        i.get<ListVirtualClassRepository>(),
+        i.get<VirtualClassRepository>(),
+      ),
+    )
+  ];
 
   @override
-  List<Router> get routers =>
-      [Router('/', child: (_, args) => VirtualClassPage(token: args.data))];
+  final List<ModularRoute> routes = [
+    ChildRoute('/', child: (_, args) => VirtualClassPage(token: args.data))
+  ];
 }

@@ -1,8 +1,6 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LocalStoreRepository {
-  
-
   void saveDataLogin(String matricula, String password) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setStringList('logindata', ['$matricula', '$password']);

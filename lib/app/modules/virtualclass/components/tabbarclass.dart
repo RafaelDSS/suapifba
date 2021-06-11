@@ -20,7 +20,8 @@ class _TabBarViewClassState extends State<TabBarViewClass> {
       length: 3,
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Turma Virtual - ${widget.virtualclass.componenteCurricular.split(' - ')[0]}'),
+          title: Text(
+              'Turma Virtual - ${widget.virtualclass.componenteCurricular.split(' - ')[0]}'),
           bottom: TabBar(
             tabs: <Widget>[
               Tab(
@@ -43,7 +44,7 @@ class _TabBarViewClassState extends State<TabBarViewClass> {
             AulaTabView(
               aulas: widget.virtualclass.aulas,
             ),
-            MaterialTabView( 
+            MaterialTabView(
               materiais: widget.virtualclass.materiaisDeAula,
             )
           ],

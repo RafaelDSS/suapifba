@@ -1,14 +1,12 @@
 import 'dart:io';
 import 'package:http/http.dart' as http;
-import 'package:http/io_client.dart';
 import 'package:suapifba/app/modules/virtualclass/models/virtualclass_model.dart';
 
-
+class VirtualClassRepository {
   Future fethData(String token, String code) async {
     http.Response response;
-    String url = 'https://suap.ifba.edu.br/api/v2/minhas-informacoes/turmas-virtuais/$code/';
-
-    IOClient ioClient = httpClient();
+    String url =
+        'https://suap.ifba.edu.br/api/v2/minhas-informacoes/turmas-virtuais/$code/';
 
     try {
       response = await http.get(

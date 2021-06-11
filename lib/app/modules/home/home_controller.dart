@@ -14,26 +14,24 @@ abstract class _HomeControllerBase with Store {
   _HomeControllerBase(this.repository);
 
   @observable
-  StudentData data = StudentData( 
-    matricula: null,
-    nomeUsual: null,
-    urlFoto: null,
-    vinculo: Vinculo(  
-      campus: null,
-      cotaMec: null,
-      curso: null,
-      nome: null,
-      situacao: null
-    )
-  );
+  StudentData data = StudentData(
+      matricula: null,
+      nomeUsual: null,
+      urlFoto: null,
+      vinculo: Vinculo(
+          campus: null,
+          cotaMec: null,
+          curso: null,
+          nome: null,
+          situacao: null));
 
   validateData() {
     if (data.matricula != null)
       return true;
-    else 
+    else
       return false;
   }
-  
+
   @action
   getData() async {
     this.token = await repositoryStore.getToken();

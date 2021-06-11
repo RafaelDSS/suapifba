@@ -5,7 +5,7 @@ import 'package:suapifba/app/shared/repositories/localstore_repository.dart';
 
 class LoginRepository {
   LocalStoreRepository repository = LocalStoreRepository();
-  
+
   Future fethToken(matricula, password) async {
     http.Response response;
     String url = 'https://suap.ifba.edu.br/api/v2/autenticacao/token/';

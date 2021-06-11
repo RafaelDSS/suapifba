@@ -5,23 +5,21 @@ import 'package:suapifba/app/shared/repositories/period_repository.dart';
 import 'hour_controller.dart';
 import 'hour_page.dart';
 
-class HourModule extends ChildModule {
+class HourModule extends Module {
   @override
-  List<Bind> get binds => [
-      Bind((i) => PeriodRepository()),
-        Bind((i) => ListVirtualClassRepository()),
-        Bind(
-          (i) => HourController(
-            i.get<PeriodRepository>(),
-            i.get<ListVirtualClassRepository>(),
-          ),
-        ),
-      ];
+  final List<Bind> binds = [
+    Bind((i) => PeriodRepository()),
+    Bind((i) => ListVirtualClassRepository()),
+    Bind(
+      (i) => HourController(
+        i.get<PeriodRepository>(),
+        i.get<ListVirtualClassRepository>(),
+      ),
+    ),
+  ];
 
   @override
-  List<Router> get routers => [
-        Router('/', child: (_, args) => HourPage(token: args.data)),
-      ];
-
-  static Inject get to => Inject<HourModule>.of();
+  final List<ModularRoute> routes = [
+    ChildRoute('/', child: (_, args) => HourPage(token: args.data)),
+  ];
 }

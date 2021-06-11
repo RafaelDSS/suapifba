@@ -7,25 +7,16 @@ import 'app_widget.dart';
 import 'modules/login/login_module.dart';
 import 'modules/reportcard/reportcard_module.dart';
 
-class AppModule extends MainModule {
-  final String route;
-
-  AppModule(this.route);
+class AppModule extends Module {
+  @override
+  final List<Bind> binds = [];
 
   @override
-  List<Bind> get binds => [];
-
-  @override
-  List<Router> get routers => [
-        Router('/login', module: LoginModule()),
-        Router('/home', module: HomeModule()),
-        Router('/reportcard', module: ReportCardModule()),
-        Router('/virtualclass', module: VirtualClassModule()),
-        Router('/hour', module: HourModule()),
-      ];
-
-  @override
-  Widget get bootstrap => AppWidget(route);
-
-  static Inject get to => Inject<AppModule>.of();
+  final List<ModularRoute> routes = [
+    ModuleRoute('/login', module: LoginModule()),
+    ModuleRoute('/home', module: HomeModule()),
+    ModuleRoute('/reportcard', module: ReportCardModule()),
+    ModuleRoute('/virtualclass', module: VirtualClassModule()),
+    ModuleRoute('/hour', module: HourModule()),
+  ];
 }

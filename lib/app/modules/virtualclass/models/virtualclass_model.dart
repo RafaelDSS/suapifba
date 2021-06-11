@@ -54,7 +54,8 @@ class VirtualClass {
         participantes: List<Participante>.from(
             json["participantes"].map((x) => Participante.fromJson(x))),
         aulas: List<Aula>.from(json["aulas"].map((x) => Aula.fromJson(x))),
-        materiaisDeAula: List<MateriaisDeAula>.from(json["materiais_de_aula"].map((x) => MateriaisDeAula.fromJson(x))),
+        materiaisDeAula: List<MateriaisDeAula>.from(
+            json["materiais_de_aula"].map((x) => MateriaisDeAula.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -90,18 +91,19 @@ class Aula {
     this.conteudo,
   });
 
- factory Aula.fromJson(Map<String, dynamic> json) => Aula(
+  factory Aula.fromJson(Map<String, dynamic> json) => Aula(
         etapa: json["etapa"],
         professor: json["professor"],
         data: DateTime.parse(json["data"]),
         quantidade: json["quantidade"],
         conteudo: json["conteudo"],
-    );
+      );
 
   Map<String, dynamic> toJson() => {
         "etapa": etapa,
         "professor": professor,
-        "data": "${data.year.toString().padLeft(4, '0')}-${data.month.toString().padLeft(2, '0')}-${data.day.toString().padLeft(2, '0')}",
+        "data":
+            "${data.year.toString().padLeft(4, '0')}-${data.month.toString().padLeft(2, '0')}-${data.day.toString().padLeft(2, '0')}",
         "quantidade": quantidade,
         "conteudo": conteudo,
       };
@@ -136,25 +138,27 @@ class Participante {
 }
 
 class MateriaisDeAula {
-    String url;
-    DateTime dataVinculacao;
-    String descricao;
+  String url;
+  DateTime dataVinculacao;
+  String descricao;
 
-    MateriaisDeAula({
-        this.url,
-        this.dataVinculacao,
-        this.descricao,
-    });
+  MateriaisDeAula({
+    this.url,
+    this.dataVinculacao,
+    this.descricao,
+  });
 
-    factory MateriaisDeAula.fromJson(Map<String, dynamic> json) => MateriaisDeAula(
+  factory MateriaisDeAula.fromJson(Map<String, dynamic> json) =>
+      MateriaisDeAula(
         url: json["url"],
         dataVinculacao: DateTime.parse(json["data_vinculacao"]),
         descricao: json["descricao"],
-    );
+      );
 
-    Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => {
         "url": url,
-        "data_vinculacao": "${dataVinculacao.year.toString().padLeft(4, '0')}-${dataVinculacao.month.toString().padLeft(2, '0')}-${dataVinculacao.day.toString().padLeft(2, '0')}",
+        "data_vinculacao":
+            "${dataVinculacao.year.toString().padLeft(4, '0')}-${dataVinculacao.month.toString().padLeft(2, '0')}-${dataVinculacao.day.toString().padLeft(2, '0')}",
         "descricao": descricao,
-    };
+      };
 }

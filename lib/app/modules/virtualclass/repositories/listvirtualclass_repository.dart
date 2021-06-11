@@ -3,11 +3,10 @@ import 'package:http/http.dart' as http;
 import 'package:suapifba/app/modules/virtualclass/models/listvirtualclass_model.dart';
 
 class ListVirtualClassRepository {
-  
-
   Future fethData(String token, String period) async {
     http.Response response;
-    String url = 'https://suap.ifba.edu.br/api/v2/minhas-informacoes/turmas-virtuais/$period/';
+    String url =
+        'https://suap.ifba.edu.br/api/v2/minhas-informacoes/turmas-virtuais/$period/';
 
     try {
       response = await http.get(
@@ -23,7 +22,8 @@ class ListVirtualClassRepository {
     final statuscode = response.statusCode;
 
     if (statuscode == 200) {
-      List<ListVirtualClass> data = listVirtualClassFromJson(response.bodyBytes);
+      List<ListVirtualClass> data =
+          listVirtualClassFromJson(response.bodyBytes);
       return data;
     }
   }

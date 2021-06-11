@@ -1,12 +1,12 @@
 import 'dart:io';
 import 'package:http/http.dart' as http;
-import 'package:http/io_client.dart';
 import 'package:suapifba/app/modules/reportcard/models/reportcard_model.dart';
 
-
+class ReportcardRepository {
   Future fethData(String token, String period) async {
     http.Response response;
-    String url = 'http://suap.ifba.edu.br/api/v2/minhas-informacoes/boletim/$period/';
+    String url =
+        'http://suap.ifba.edu.br/api/v2/minhas-informacoes/boletim/$period/';
 
     try {
       response = await http.get(

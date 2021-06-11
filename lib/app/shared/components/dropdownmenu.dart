@@ -17,7 +17,6 @@ class DropDownMenu extends StatefulWidget {
 }
 
 class _DropDownMenuState extends State<DropDownMenu> {
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -39,7 +38,6 @@ class _DropDownMenuState extends State<DropDownMenu> {
             widget.periodValue = itemSelected;
           });
           widget.onChangeFunc(widget.token, itemSelected);
-          print(itemSelected);
         },
       ),
     );

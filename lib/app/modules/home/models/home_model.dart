@@ -4,8 +4,7 @@ class StudentData {
   String urlFoto;
   Vinculo vinculo;
 
-  StudentData(
-      {this.matricula, this.nomeUsual, this.urlFoto, this.vinculo});
+  StudentData({this.matricula, this.nomeUsual, this.urlFoto, this.vinculo});
 
   StudentData.fromJson(Map<String, dynamic> json) {
     matricula = json['matricula'];

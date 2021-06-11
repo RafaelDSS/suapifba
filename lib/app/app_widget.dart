@@ -9,14 +9,12 @@ class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      navigatorKey: Modular.navigatorKey,
       debugShowCheckedModeBanner: false,
       title: 'SUAP',
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
       initialRoute: route,
-      onGenerateRoute: Modular.generateRoute,
-    );
+    ).modular();
   }
 }
