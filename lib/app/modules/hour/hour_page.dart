@@ -7,9 +7,9 @@ import 'package:suapifba/app/shared/components/dropdownmenu.dart';
 import 'package:suapifba/app/shared/components/modal_and_dropdown_default.dart';
 
 class HourPage extends StatefulWidget {
-  final String token;
+  final String? token;
 
-  HourPage({Key key, this.token}) : super(key: key);
+  HourPage({Key? key, this.token}) : super(key: key);
 
   @override
   _HourPageState createState() => _HourPageState();
@@ -34,7 +34,7 @@ class _HourPageState extends State<HourPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBarDefault(title: "Horários"),
+      appBar: appBarDefault(title: "Horários") as PreferredSizeWidget?,
       body: ModalAndDropdownDefault(
         token: widget.token,
         controller: controller,
@@ -55,7 +55,7 @@ class _HourPageState extends State<HourPage> {
                     DataColumn(label: tableTitleBar('Quinta')),
                     DataColumn(label: tableTitleBar('Sexta	')),
                   ],
-                  rows: controller.hoursClass.map((item) {
+                  rows: controller.hoursClass!.map((item) {
                     return DataRow(cells: [
                       DataCell(Text(item[0])),
                       DataCell(Text(item[1])),

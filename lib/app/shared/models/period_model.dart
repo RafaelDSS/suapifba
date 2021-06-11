@@ -11,8 +11,8 @@ String periodToJson(List<Period> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class Period {
-  int anoLetivo;
-  int periodoLetivo;
+  int? anoLetivo;
+  int? periodoLetivo;
 
   Period({
     this.anoLetivo,

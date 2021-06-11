@@ -22,16 +22,16 @@ abstract class _ReportcardControllerBase with Store {
   changeLoading(bool value) => loading = value;
 
   @observable
-  List<Period> periods;
+  List<Period>? periods;
 
   @action
-  getPeriods(String token) async {
+  getPeriods(String? token) async {
     periods = await periodRepository.fethData(token);
     loading = false;
   }
 
   @observable
-  List<ReportCard> notes;
+  List<ReportCard>? notes;
 
   @action
   getNotes(String token, String period) async {

@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:suapifba/app/modules/virtualclass/models/virtualclass_model.dart';
 
 class AulaTabView extends StatelessWidget {
-  final List<Aula> aulas;
+  final List<Aula>? aulas;
 
   AulaTabView({this.aulas});
 
   Widget listAulas() {
     return ListView(
-      children: aulas.map(
+      children: aulas!.map(
         (item) {
           return ListTile(
-            title: Text(item.conteudo),
-            subtitle: Text(formatter.format(item.data)),
+            title: Text(item.conteudo!),
+            subtitle: Text(formatter.format(item.data!)),
           );
         },
       ).toList(),
@@ -28,7 +28,7 @@ class AulaTabView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: aulas.isEmpty ? infoCenter() : listAulas(),
+      child: aulas!.isEmpty ? infoCenter() : listAulas(),
     );
   }
 }

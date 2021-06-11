@@ -8,9 +8,9 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:suapifba/app/shared/components/modal_and_dropdown_default.dart';
 
 class ReportCard extends StatefulWidget {
-  final String token;
+  final String? token;
 
-  ReportCard({Key key, this.token}) : super(key: key);
+  ReportCard({Key? key, this.token}) : super(key: key);
 
   @override
   _ReportCardState createState() => _ReportCardState();
@@ -27,7 +27,7 @@ class _ReportCardState extends State<ReportCard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBarDefault(title: "Boletim"),
+      appBar: appBarDefault(title: "Boletim") as PreferredSizeWidget?,
       body: ModalAndDropdownDefault(
         token: widget.token,
         controller: controller,

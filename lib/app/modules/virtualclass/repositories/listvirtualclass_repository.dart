@@ -4,13 +4,13 @@ import 'package:suapifba/app/modules/virtualclass/models/listvirtualclass_model.
 
 class ListVirtualClassRepository {
   Future fethData(String token, String period) async {
-    http.Response response;
-    String url =
+    late http.Response response;
+    final url =
         'https://suap.ifba.edu.br/api/v2/minhas-informacoes/turmas-virtuais/$period/';
 
     try {
       response = await http.get(
-        '$url',
+        Uri.parse(url),
         headers: {
           HttpHeaders.authorizationHeader: 'JWT $token',
           HttpHeaders.contentTypeHeader: 'application/json',

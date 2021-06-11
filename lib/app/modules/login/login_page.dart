@@ -38,11 +38,11 @@ class _LoginState extends State<Login> {
         hintStyle: TextStyle(fontWeight: FontWeight.w300),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(6),
-          borderSide: BorderSide(color: Colors.green[400], width: 2.0),
+          borderSide: BorderSide(color: Colors.green[400]!, width: 2.0),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(6),
-          borderSide: BorderSide(color: Colors.grey[300], width: 2.0),
+          borderSide: BorderSide(color: Colors.grey[300]!, width: 2.0),
         ),
       ),
     );
@@ -59,11 +59,11 @@ class _LoginState extends State<Login> {
         hintStyle: TextStyle(fontWeight: FontWeight.w300),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(6),
-          borderSide: BorderSide(color: Colors.green[400], width: 2.0),
+          borderSide: BorderSide(color: Colors.green[400]!, width: 2.0),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(6),
-          borderSide: BorderSide(color: Colors.grey[300], width: 2.0),
+          borderSide: BorderSide(color: Colors.grey[300]!, width: 2.0),
         ),
       ),
     );
@@ -119,7 +119,7 @@ class _LoginState extends State<Login> {
     );
 
     return Scaffold(
-      appBar: appBarDefault(title: 'Login'),
+      appBar: appBarDefault(title: 'Login') as PreferredSizeWidget?,
       body: Center(
         child: Container(
           child: Padding(

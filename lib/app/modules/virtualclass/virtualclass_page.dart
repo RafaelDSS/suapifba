@@ -9,9 +9,9 @@ import 'package:suapifba/app/shared/components/modal_and_dropdown_default.dart';
 import 'package:suapifba/app/shared/components/modal_progress.dart';
 
 class VirtualClassPage extends StatefulWidget {
-  final String token;
+  final String? token;
 
-  VirtualClassPage({Key key, this.token}) : super(key: key);
+  VirtualClassPage({Key? key, this.token}) : super(key: key);
 
   @override
   _VirtualClassPageState createState() => _VirtualClassPageState();
@@ -29,7 +29,7 @@ class _VirtualClassPageState extends State<VirtualClassPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBarDefault(title: 'Turmas Virtuais'),
+      appBar: appBarDefault(title: 'Turmas Virtuais') as PreferredSizeWidget?,
       body: ModalAndDropdownDefault(
         token: widget.token,
         controller: controller,

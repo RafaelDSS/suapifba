@@ -7,8 +7,8 @@ class BoxAnimated extends StatelessWidget {
     return SizedBox(
       height: 30.0,
       child: Shimmer.fromColors(
-        baseColor: Colors.grey[300],
-        highlightColor: Colors.grey[100],
+        baseColor: Colors.grey[300]!,
+        highlightColor: Colors.grey[100]!,
         child: Container(
           width: double.infinity,
           height: 30.0,

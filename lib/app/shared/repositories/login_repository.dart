@@ -8,12 +8,12 @@ class LoginRepository {
 
   Future fethToken(matricula, password) async {
     http.Response response;
-    String url = 'https://suap.ifba.edu.br/api/v2/autenticacao/token/';
+    final url = 'https://suap.ifba.edu.br/api/v2/autenticacao/token/';
 
     Map body = {"username": matricula, "password": password};
 
     try {
-      response = await http.post('$url',
+      response = await http.post(Uri.parse(url),
           headers: {
             HttpHeaders.contentTypeHeader: 'application/json',
             HttpHeaders.acceptHeader: 'application/json',

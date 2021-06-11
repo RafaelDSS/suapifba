@@ -15,17 +15,17 @@ VirtualClass virtualClassFromJson(Uint8List str) =>
 String virtualClassToJson(VirtualClass data) => json.encode(data.toJson());
 
 class VirtualClass {
-  int id;
-  String anoLetivo;
-  int periodoLetivo;
-  String componenteCurricular;
-  List<Participante> professores;
-  List<dynamic> locaisDeAula;
-  DateTime dataInicio;
-  DateTime dataFim;
-  List<Participante> participantes;
-  List<Aula> aulas;
-  List<MateriaisDeAula> materiaisDeAula;
+  int? id;
+  int? anoLetivo;
+  int? periodoLetivo;
+  String? componenteCurricular;
+  List<Participante>? professores;
+  List<dynamic>? locaisDeAula;
+  DateTime? dataInicio;
+  DateTime? dataFim;
+  List<Participante>? participantes;
+  List<Aula>? aulas;
+  List<MateriaisDeAula>? materiaisDeAula;
 
   VirtualClass({
     this.id,
@@ -63,25 +63,25 @@ class VirtualClass {
         "ano_letivo": anoLetivo,
         "periodo_letivo": periodoLetivo,
         "componente_curricular": componenteCurricular,
-        "professores": List<dynamic>.from(professores.map((x) => x.toJson())),
-        "locais_de_aula": List<dynamic>.from(locaisDeAula.map((x) => x)),
+        "professores": List<dynamic>.from(professores!.map((x) => x.toJson())),
+        "locais_de_aula": List<dynamic>.from(locaisDeAula!.map((x) => x)),
         "data_inicio":
-            "${dataInicio.year.toString().padLeft(4, '0')}-${dataInicio.month.toString().padLeft(2, '0')}-${dataInicio.day.toString().padLeft(2, '0')}",
+            "${dataInicio!.year.toString().padLeft(4, '0')}-${dataInicio!.month.toString().padLeft(2, '0')}-${dataInicio!.day.toString().padLeft(2, '0')}",
         "data_fim":
-            "${dataFim.year.toString().padLeft(4, '0')}-${dataFim.month.toString().padLeft(2, '0')}-${dataFim.day.toString().padLeft(2, '0')}",
+            "${dataFim!.year.toString().padLeft(4, '0')}-${dataFim!.month.toString().padLeft(2, '0')}-${dataFim!.day.toString().padLeft(2, '0')}",
         "participantes":
-            List<dynamic>.from(participantes.map((x) => x.toJson())),
-        "aulas": List<dynamic>.from(aulas.map((x) => x.toJson())),
-        "materiais_de_aula": List<dynamic>.from(materiaisDeAula.map((x) => x)),
+            List<dynamic>.from(participantes!.map((x) => x.toJson())),
+        "aulas": List<dynamic>.from(aulas!.map((x) => x.toJson())),
+        "materiais_de_aula": List<dynamic>.from(materiaisDeAula!.map((x) => x)),
       };
 }
 
 class Aula {
-  int etapa;
-  String professor;
-  DateTime data;
-  int quantidade;
-  String conteudo;
+  int? etapa;
+  String? professor;
+  DateTime? data;
+  int? quantidade;
+  String? conteudo;
 
   Aula({
     this.etapa,
@@ -103,17 +103,17 @@ class Aula {
         "etapa": etapa,
         "professor": professor,
         "data":
-            "${data.year.toString().padLeft(4, '0')}-${data.month.toString().padLeft(2, '0')}-${data.day.toString().padLeft(2, '0')}",
+            "${data!.year.toString().padLeft(4, '0')}-${data!.month.toString().padLeft(2, '0')}-${data!.day.toString().padLeft(2, '0')}",
         "quantidade": quantidade,
         "conteudo": conteudo,
       };
 }
 
 class Participante {
-  String matricula;
-  String foto;
-  String email;
-  String nome;
+  String? matricula;
+  String? foto;
+  String? email;
+  String? nome;
 
   Participante({
     this.matricula,
@@ -138,9 +138,9 @@ class Participante {
 }
 
 class MateriaisDeAula {
-  String url;
-  DateTime dataVinculacao;
-  String descricao;
+  String? url;
+  DateTime? dataVinculacao;
+  String? descricao;
 
   MateriaisDeAula({
     this.url,
@@ -158,7 +158,7 @@ class MateriaisDeAula {
   Map<String, dynamic> toJson() => {
         "url": url,
         "data_vinculacao":
-            "${dataVinculacao.year.toString().padLeft(4, '0')}-${dataVinculacao.month.toString().padLeft(2, '0')}-${dataVinculacao.day.toString().padLeft(2, '0')}",
+            "${dataVinculacao!.year.toString().padLeft(4, '0')}-${dataVinculacao!.month.toString().padLeft(2, '0')}-${dataVinculacao!.day.toString().padLeft(2, '0')}",
         "descricao": descricao,
       };
 }

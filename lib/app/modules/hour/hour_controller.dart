@@ -22,16 +22,16 @@ abstract class _HourControllerBase with Store {
   changeLoading(bool value) => loading = value;
 
   @observable
-  List<Period> periods;
+  List<Period>? periods;
 
   @action
-  getPeriods(String token) async {
+  getPeriods(String? token) async {
     periods = await periodRepository.fethData(token);
     loading = false;
   }
 
   @observable
-  List<List> hoursClass;
+  List<List>? hoursClass;
 
   @action
   getVirtualClasses(String token, String period) async {
@@ -52,7 +52,7 @@ abstract class _HourControllerBase with Store {
       ['17:30 - 18:20', '', '', '', '', ''],
     ];
     for (var item in classes) {
-      List hoursDisciplina = item.horariosDeAula.split(' / ');
+      List hoursDisciplina = item.horariosDeAula!.split(' / ');
 
       for (var hour in hoursDisciplina) {
         int day = int.parse(hour[0]) - 1;

@@ -12,7 +12,7 @@ abstract class LoginControllerBase with Store {
   LoginControllerBase(this.repository);
 
   @observable
-  String matricula;
+  String? matricula;
 
   @action
   changeMatricula(String value) {
@@ -20,7 +20,7 @@ abstract class LoginControllerBase with Store {
   }
 
   @observable
-  String password;
+  String? password;
 
   @action
   changePassword(String value) {
@@ -41,7 +41,7 @@ abstract class LoginControllerBase with Store {
   @action
   submitForm() async {
     isbuttonpress = true;
-    String token = await repository.fethToken(matricula, password);
+    String? token = await repository.fethToken(matricula, password);
     if (token == null) {
       isbuttonpress = false;
     } else {

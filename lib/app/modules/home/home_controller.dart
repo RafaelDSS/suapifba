@@ -9,7 +9,7 @@ class HomeController = _HomeControllerBase with _$HomeController;
 abstract class _HomeControllerBase with Store {
   HomeRepository repository;
   LocalStoreRepository repositoryStore = LocalStoreRepository();
-  String token;
+  String? token;
 
   _HomeControllerBase(this.repository);
 
@@ -36,6 +36,6 @@ abstract class _HomeControllerBase with Store {
   getData() async {
     this.token = await repositoryStore.getToken();
     final studentdata = await repository.fethData(token);
-    data = studentdata;
+    if (studentdata != null) data = studentdata;
   }
 }

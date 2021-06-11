@@ -22,7 +22,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       // drawerScrimColor: Colors.transparent,
-      appBar: appBarDefault(),
+      appBar: appBarDefault() as PreferredSizeWidget?,
       drawer: MenuDrawer(),
       body: Container(
         color: Colors.grey[100],

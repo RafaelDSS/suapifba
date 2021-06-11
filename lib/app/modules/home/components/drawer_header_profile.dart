@@ -7,7 +7,7 @@ import 'package:suapifba/app/modules/home/utils/capitalize_word.dart';
 class DrawerHeaderProfile extends StatelessWidget {
   final controller = Modular.get<HomeController>();
 
-  Widget circularAvatar(String pathImage) {
+  Widget circularAvatar(String? pathImage) {
     return CircleAvatar(
       // radius: 43,
       backgroundColor: Colors.green[700],
@@ -39,7 +39,7 @@ class DrawerHeaderProfile extends StatelessWidget {
         builder: (_) {
           if (controller.validateData()) {
             return Text(
-              controller.data.matricula,
+              controller.data.matricula!,
               style: TextStyle(
                 fontSize: 13,
                 fontWeight: FontWeight.w300,
@@ -53,7 +53,7 @@ class DrawerHeaderProfile extends StatelessWidget {
         builder: (_) {
           if (controller.validateData()) {
             return Text(
-              titleCase(controller.data.vinculo.nome.toLowerCase()),
+              titleCase(controller.data.vinculo!.nome!.toLowerCase()),
               style: TextStyle(
                 fontSize: 23.0,
                 color: Colors.white,

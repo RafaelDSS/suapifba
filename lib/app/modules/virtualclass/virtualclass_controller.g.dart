@@ -27,13 +27,13 @@ mixin _$VirtualClassController on _VirtualClassControllerBase, Store {
   final _$periodsAtom = Atom(name: '_VirtualClassControllerBase.periods');
 
   @override
-  List<Period> get periods {
+  List<Period>? get periods {
     _$periodsAtom.reportRead();
     return super.periods;
   }
 
   @override
-  set periods(List<Period> value) {
+  set periods(List<Period>? value) {
     _$periodsAtom.reportWrite(value, super.periods, () {
       super.periods = value;
     });
@@ -43,13 +43,13 @@ mixin _$VirtualClassController on _VirtualClassControllerBase, Store {
       Atom(name: '_VirtualClassControllerBase.virtualClasses');
 
   @override
-  List<ListVirtualClass> get virtualClasses {
+  List<ListVirtualClass>? get virtualClasses {
     _$virtualClassesAtom.reportRead();
     return super.virtualClasses;
   }
 
   @override
-  set virtualClasses(List<ListVirtualClass> value) {
+  set virtualClasses(List<ListVirtualClass>? value) {
     _$virtualClassesAtom.reportWrite(value, super.virtualClasses, () {
       super.virtualClasses = value;
     });
@@ -59,7 +59,7 @@ mixin _$VirtualClassController on _VirtualClassControllerBase, Store {
       AsyncAction('_VirtualClassControllerBase.getPeriods');
 
   @override
-  Future getPeriods(String token) {
+  Future getPeriods(String? token) {
     return _$getPeriodsAsyncAction.run(() => super.getPeriods(token));
   }
 
@@ -76,7 +76,7 @@ mixin _$VirtualClassController on _VirtualClassControllerBase, Store {
       AsyncAction('_VirtualClassControllerBase.getVirtualClass');
 
   @override
-  Future getVirtualClass(String token, String code) {
+  Future<VirtualClass> getVirtualClass(String? token, String? code) {
     return _$getVirtualClassAsyncAction
         .run(() => super.getVirtualClass(token, code));
   }

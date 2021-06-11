@@ -4,11 +4,11 @@ import 'package:suapifba/app/modules/home/home_controller.dart';
 import 'package:suapifba/app/shared/models/period_model.dart';
 
 class DropDownMenu extends StatefulWidget {
-  final List<Period> items;
-  final String title;
-  final Function onChangeFunc;
-  String periodValue;
-  final String token;
+  final List<Period>? items;
+  final String? title;
+  final Function? onChangeFunc;
+  String? periodValue;
+  final String? token;
 
   DropDownMenu({this.items, this.title, this.onChangeFunc, this.token});
 
@@ -23,21 +23,21 @@ class _DropDownMenuState extends State<DropDownMenu> {
       padding: EdgeInsets.all(10.0),
       child: DropdownButton(
         iconSize: 26,
-        hint: Text(widget.title),
+        hint: Text(widget.title!),
         value: widget.periodValue,
         isExpanded: true,
-        items: widget.items.map((period) {
+        items: widget.items!.map((period) {
           final semestre = '${period.anoLetivo}/${period.periodoLetivo}';
           return DropdownMenuItem(
             value: semestre,
             child: Text(semestre),
           );
         }).toList(),
-        onChanged: (String itemSelected) {
+        onChanged: (String? itemSelected) {
           setState(() {
             widget.periodValue = itemSelected;
           });
-          widget.onChangeFunc(widget.token, itemSelected);
+          widget.onChangeFunc!(widget.token, itemSelected);
         },
       ),
     );

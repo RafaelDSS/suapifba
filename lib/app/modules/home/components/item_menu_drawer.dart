@@ -4,10 +4,10 @@ import 'package:suapifba/app/modules/home/home_controller.dart';
 import 'dart:ui' as ui;
 
 class ItemMenuDrawer extends StatelessWidget {
-  final IconData icon;
-  final String title;
-  final String route;
-  final String token = Modular.get<HomeController>().token;
+  final IconData? icon;
+  final String? title;
+  final String? route;
+  final String? token = Modular.get<HomeController>().token;
 
   ItemMenuDrawer({this.icon, this.title, this.route});
 
@@ -63,7 +63,7 @@ class ItemMenuDrawer extends StatelessWidget {
             ],
           ),
           onTap: () {
-            Modular.to.pushNamed(route, arguments: token);
+            Modular.to.pushNamed(route!, arguments: token);
           },
         ),
       ),

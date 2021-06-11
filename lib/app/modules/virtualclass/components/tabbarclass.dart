@@ -5,7 +5,7 @@ import 'package:suapifba/app/modules/virtualclass/components/participantestab.da
 import 'package:suapifba/app/modules/virtualclass/models/virtualclass_model.dart';
 
 class TabBarViewClass extends StatefulWidget {
-  final VirtualClass virtualclass;
+  final VirtualClass? virtualclass;
 
   TabBarViewClass({this.virtualclass});
 
@@ -21,7 +21,7 @@ class _TabBarViewClassState extends State<TabBarViewClass> {
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-              'Turma Virtual - ${widget.virtualclass.componenteCurricular.split(' - ')[0]}'),
+              'Turma Virtual - ${widget.virtualclass!.componenteCurricular!.split(' - ')[0]}'),
           bottom: TabBar(
             tabs: <Widget>[
               Tab(
@@ -39,13 +39,13 @@ class _TabBarViewClassState extends State<TabBarViewClass> {
         body: TabBarView(
           children: <Widget>[
             ParticipantesTabView(
-              participantes: widget.virtualclass.participantes,
+              participantes: widget.virtualclass!.participantes,
             ),
             AulaTabView(
-              aulas: widget.virtualclass.aulas,
+              aulas: widget.virtualclass!.aulas,
             ),
             MaterialTabView(
-              materiais: widget.virtualclass.materiaisDeAula,
+              materiais: widget.virtualclass!.materiaisDeAula,
             )
           ],
         ),

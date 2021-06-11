@@ -12,13 +12,13 @@ mixin _$LoginController on LoginControllerBase, Store {
   final _$matriculaAtom = Atom(name: 'LoginControllerBase.matricula');
 
   @override
-  String get matricula {
+  String? get matricula {
     _$matriculaAtom.reportRead();
     return super.matricula;
   }
 
   @override
-  set matricula(String value) {
+  set matricula(String? value) {
     _$matriculaAtom.reportWrite(value, super.matricula, () {
       super.matricula = value;
     });
@@ -27,13 +27,13 @@ mixin _$LoginController on LoginControllerBase, Store {
   final _$passwordAtom = Atom(name: 'LoginControllerBase.password');
 
   @override
-  String get password {
+  String? get password {
     _$passwordAtom.reportRead();
     return super.password;
   }
 
   @override
-  set password(String value) {
+  set password(String? value) {
     _$passwordAtom.reportWrite(value, super.password, () {
       super.password = value;
     });

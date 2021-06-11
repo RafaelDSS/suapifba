@@ -3,6 +3,7 @@ import 'package:suapifba/app/modules/virtualclass/repositories/listvirtualclass_
 import 'package:suapifba/app/modules/virtualclass/repositories/virtualclass_repository.dart';
 import 'package:suapifba/app/shared/models/period_model.dart';
 import 'package:suapifba/app/shared/repositories/period_repository.dart';
+import 'package:suapifba/app/modules/virtualclass/models/virtualclass_model.dart';
 
 import 'models/listvirtualclass_model.dart';
 part 'virtualclass_controller.g.dart';
@@ -24,16 +25,16 @@ abstract class _VirtualClassControllerBase with Store {
   changeLoading(bool value) => loading = value;
 
   @observable
-  List<Period> periods;
+  List<Period>? periods;
 
   @action
-  getPeriods(String token) async {
+  getPeriods(String? token) async {
     periods = await periodRepository.fethData(token);
     loading = false;
   }
 
   @observable
-  List<ListVirtualClass> virtualClasses;
+  List<ListVirtualClass>? virtualClasses;
 
   @action
   getVirtualClasses(String token, String period) async {
@@ -43,7 +44,7 @@ abstract class _VirtualClassControllerBase with Store {
   }
 
   @action
-  getVirtualClass(String token, String code) async {
+  Future<VirtualClass> getVirtualClass(String? token, String? code) async {
     loading = true;
     final virtualClass = await virtualClassRepository.fethData(token, code);
     loading = false;

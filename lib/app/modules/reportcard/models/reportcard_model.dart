@@ -13,22 +13,22 @@ String reportCardToJson(List<ReportCard> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class ReportCard {
-  String codigoDiario;
-  String disciplina;
-  bool segundoSemestre;
-  int cargaHoraria;
-  int cargaHorariaCumprida;
-  int numeroFaltas;
-  int percentualCargaHorariaFrequentada;
-  String situacao;
-  int quantidadeAvaliacoes;
-  Nota notaEtapa1;
-  Nota notaEtapa2;
-  Nota notaEtapa3;
-  Nota notaEtapa4;
-  double mediaDisciplina;
-  Nota notaAvaliacaoFinal;
-  double mediaFinalDisciplina;
+  String? codigoDiario;
+  String? disciplina;
+  bool? segundoSemestre;
+  int? cargaHoraria;
+  int? cargaHorariaCumprida;
+  int? numeroFaltas;
+  int? percentualCargaHorariaFrequentada;
+  String? situacao;
+  int? quantidadeAvaliacoes;
+  Nota? notaEtapa1;
+  Nota? notaEtapa2;
+  Nota? notaEtapa3;
+  Nota? notaEtapa4;
+  double? mediaDisciplina;
+  Nota? notaAvaliacaoFinal;
+  double? mediaFinalDisciplina;
 
   ReportCard({
     this.codigoDiario,
@@ -84,20 +84,20 @@ class ReportCard {
             percentualCargaHorariaFrequentada,
         "situacao": situacao,
         "quantidade_avaliacoes": quantidadeAvaliacoes,
-        "nota_etapa_1": notaEtapa1.toJson(),
-        "nota_etapa_2": notaEtapa2.toJson(),
-        "nota_etapa_3": notaEtapa3.toJson(),
-        "nota_etapa_4": notaEtapa4.toJson(),
+        "nota_etapa_1": notaEtapa1!.toJson(),
+        "nota_etapa_2": notaEtapa2!.toJson(),
+        "nota_etapa_3": notaEtapa3!.toJson(),
+        "nota_etapa_4": notaEtapa4!.toJson(),
         "media_disciplina": mediaDisciplina == null ? null : mediaDisciplina,
-        "nota_avaliacao_final": notaAvaliacaoFinal.toJson(),
+        "nota_avaliacao_final": notaAvaliacaoFinal!.toJson(),
         "media_final_disciplina":
             mediaFinalDisciplina == null ? null : mediaFinalDisciplina,
       };
 }
 
 class Nota {
-  double nota;
-  int faltas;
+  double? nota;
+  int? faltas;
 
   Nota({
     this.nota,

@@ -1,8 +1,8 @@
 class StudentData {
-  String matricula;
-  String nomeUsual;
-  String urlFoto;
-  Vinculo vinculo;
+  String? matricula;
+  String? nomeUsual;
+  String? urlFoto;
+  Vinculo? vinculo;
 
   StudentData({this.matricula, this.nomeUsual, this.urlFoto, this.vinculo});
 
@@ -20,18 +20,18 @@ class StudentData {
     data['nome_usual'] = this.nomeUsual;
     data['url_foto_75x100'] = this.urlFoto;
     if (this.vinculo != null) {
-      data['vinculo'] = this.vinculo.toJson();
+      data['vinculo'] = this.vinculo!.toJson();
     }
     return data;
   }
 }
 
 class Vinculo {
-  String nome;
-  String curso;
-  String campus;
-  String situacao;
-  String cotaMec;
+  String? nome;
+  String? curso;
+  String? campus;
+  String? situacao;
+  String? cotaMec;
 
   Vinculo({
     this.nome,

@@ -27,13 +27,13 @@ mixin _$HourController on _HourControllerBase, Store {
   final _$periodsAtom = Atom(name: '_HourControllerBase.periods');
 
   @override
-  List<Period> get periods {
+  List<Period>? get periods {
     _$periodsAtom.reportRead();
     return super.periods;
   }
 
   @override
-  set periods(List<Period> value) {
+  set periods(List<Period>? value) {
     _$periodsAtom.reportWrite(value, super.periods, () {
       super.periods = value;
     });
@@ -42,13 +42,13 @@ mixin _$HourController on _HourControllerBase, Store {
   final _$hoursClassAtom = Atom(name: '_HourControllerBase.hoursClass');
 
   @override
-  List<List<dynamic>> get hoursClass {
+  List<List<dynamic>>? get hoursClass {
     _$hoursClassAtom.reportRead();
     return super.hoursClass;
   }
 
   @override
-  set hoursClass(List<List<dynamic>> value) {
+  set hoursClass(List<List<dynamic>>? value) {
     _$hoursClassAtom.reportWrite(value, super.hoursClass, () {
       super.hoursClass = value;
     });
@@ -57,7 +57,7 @@ mixin _$HourController on _HourControllerBase, Store {
   final _$getPeriodsAsyncAction = AsyncAction('_HourControllerBase.getPeriods');
 
   @override
-  Future getPeriods(String token) {
+  Future getPeriods(String? token) {
     return _$getPeriodsAsyncAction.run(() => super.getPeriods(token));
   }
 

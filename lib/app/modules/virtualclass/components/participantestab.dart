@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:suapifba/app/modules/virtualclass/models/virtualclass_model.dart';
 
 class ParticipantesTabView extends StatelessWidget {
-  final List<Participante> participantes;
+  final List<Participante>? participantes;
 
   ParticipantesTabView({this.participantes});
 
@@ -10,7 +10,7 @@ class ParticipantesTabView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: ListView(
-        children: participantes.map((item) {
+        children: participantes!.map((item) {
           return Card(
             color: Colors.grey[300],
             elevation: 0,
@@ -34,7 +34,7 @@ class ParticipantesTabView extends StatelessWidget {
               title: Padding(
                 padding: const EdgeInsets.only(bottom: 2.0),
                 child: Text(
-                  item.nome,
+                  item.nome!,
                   style: TextStyle(
                     color: Colors.grey,
                     fontSize: 20,
@@ -53,7 +53,7 @@ class ParticipantesTabView extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(left: 5.0),
                     child: Text(
-                      item.matricula,
+                      item.matricula!,
                     ),
                   ),
                 ],

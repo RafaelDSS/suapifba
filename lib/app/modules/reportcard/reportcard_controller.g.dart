@@ -27,13 +27,13 @@ mixin _$ReportcardController on _ReportcardControllerBase, Store {
   final _$periodsAtom = Atom(name: '_ReportcardControllerBase.periods');
 
   @override
-  List<Period> get periods {
+  List<Period>? get periods {
     _$periodsAtom.reportRead();
     return super.periods;
   }
 
   @override
-  set periods(List<Period> value) {
+  set periods(List<Period>? value) {
     _$periodsAtom.reportWrite(value, super.periods, () {
       super.periods = value;
     });
@@ -42,13 +42,13 @@ mixin _$ReportcardController on _ReportcardControllerBase, Store {
   final _$notesAtom = Atom(name: '_ReportcardControllerBase.notes');
 
   @override
-  List<ReportCard> get notes {
+  List<ReportCard>? get notes {
     _$notesAtom.reportRead();
     return super.notes;
   }
 
   @override
-  set notes(List<ReportCard> value) {
+  set notes(List<ReportCard>? value) {
     _$notesAtom.reportWrite(value, super.notes, () {
       super.notes = value;
     });
@@ -58,7 +58,7 @@ mixin _$ReportcardController on _ReportcardControllerBase, Store {
       AsyncAction('_ReportcardControllerBase.getPeriods');
 
   @override
-  Future getPeriods(String token) {
+  Future getPeriods(String? token) {
     return _$getPeriodsAsyncAction.run(() => super.getPeriods(token));
   }
 

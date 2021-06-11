@@ -14,12 +14,12 @@ String listVirtualClassToJson(List<ListVirtualClass> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class ListVirtualClass {
-  String id;
-  String sigla;
-  String descricao;
+  String? id;
+  String? sigla;
+  String? descricao;
   dynamic observacao;
-  List<String> locaisDeAula;
-  String horariosDeAula;
+  List<String>? locaisDeAula;
+  String? horariosDeAula;
 
   ListVirtualClass({
     this.id,
@@ -45,7 +45,7 @@ class ListVirtualClass {
         "sigla": sigla,
         "descricao": descricao,
         "observacao": observacao,
-        "locais_de_aula": List<dynamic>.from(locaisDeAula.map((x) => x)),
+        "locais_de_aula": List<dynamic>.from(locaisDeAula!.map((x) => x)),
         "horarios_de_aula": horariosDeAula,
       };
 }

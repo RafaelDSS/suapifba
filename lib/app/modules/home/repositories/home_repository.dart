@@ -4,20 +4,20 @@ import 'package:http/http.dart' as http;
 import 'package:suapifba/app/modules/home/models/home_model.dart';
 
 class HomeRepository {
-  Future fethData(String token) async {
-    http.Response response;
-    String url = 'http://suap.ifba.edu.br/api/v2/minhas-informacoes/meus-dados';
+  Future fethData(String? token) async {
+    late http.Response response;
+    final url = 'http://suap.ifba.edu.br/api/v2/minhas-informacoes/meus-dados';
 
     try {
       response = await http.get(
-        '$url',
+        Uri.parse(url),
         headers: {
           HttpHeaders.authorizationHeader: 'JWT $token',
           HttpHeaders.contentTypeHeader: 'application/json',
         },
       );
     } catch (e) {
-      print(e);
+      return null;
     }
     final statuscode = response.statusCode;
 

@@ -9,7 +9,7 @@ import 'dart:ui' as ui;
 class ListCardInfo extends StatelessWidget {
   final controller = Modular.get<HomeController>();
 
-  Widget cardDefault({String title, List<Widget> children, double width}) {
+  Widget cardDefault({required String title, required List<Widget> children, double? width}) {
     return Card(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
@@ -39,7 +39,7 @@ class ListCardInfo extends StatelessWidget {
     );
   }
 
-  Widget lineInfo({IconData icon, String title, String content}) {
+  Widget lineInfo({IconData? icon, required String title, String? content}) {
     return Row(
       children: <Widget>[
         SizedBox(
@@ -107,12 +107,12 @@ class ListCardInfo extends StatelessWidget {
                     lineInfo(
                       icon: Icons.person,
                       title: 'Nome',
-                      content: controller.data.vinculo.nome,
+                      content: controller.data.vinculo!.nome,
                     ),
                     lineInfo(
                       icon: Icons.school,
                       title: 'Curso',
-                      content: controller.data.vinculo.curso,
+                      content: controller.data.vinculo!.curso,
                     ),
                     lineInfo(
                       icon: Icons.assignment_turned_in,
@@ -127,17 +127,17 @@ class ListCardInfo extends StatelessWidget {
                     lineInfo(
                       icon: Icons.location_on,
                       title: 'Campus',
-                      content: controller.data.vinculo.campus,
+                      content: controller.data.vinculo!.campus,
                     ),
                     lineInfo(
                       icon: Icons.done_outline,
                       title: 'Situação',
-                      content: controller.data.vinculo.situacao,
+                      content: controller.data.vinculo!.situacao,
                     ),
                     lineInfo(
                       icon: Icons.people,
                       title: 'Cota',
-                      content: controller.data.vinculo.cotaMec,
+                      content: controller.data.vinculo!.cotaMec,
                     )
                   ],
                   width: width)

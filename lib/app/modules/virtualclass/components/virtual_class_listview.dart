@@ -8,8 +8,8 @@ class VirtualClassListView extends StatelessWidget {
   Listagem de salas virtuais por período
   */
 
-  final VirtualClassController controller;
-  final String token;
+  final VirtualClassController? controller;
+  final String? token;
 
   VirtualClassListView({this.controller, this.token});
 
@@ -17,12 +17,12 @@ class VirtualClassListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: ListView(
-        children: controller.virtualClasses.map(
+        children: controller!.virtualClasses!.map(
           (item) {
             return ListTile(
               leading: Icon(Icons.video_label),
               title: Text(
-                item.descricao,
+                item.descricao!,
                 style: TextStyle(
                   color: Colors.grey[700],
                   // shadows: [
@@ -36,10 +36,10 @@ class VirtualClassListView extends StatelessWidget {
                   fontWeight: FontWeight.w400,
                 ),
               ),
-              subtitle: Text(item.horariosDeAula),
+              subtitle: Text(item.horariosDeAula!),
               onTap: () async {
-                final VirtualClass data =
-                    await controller.getVirtualClass(token, item.id);
+                final VirtualClass data = await (controller!
+                    .getVirtualClass(token, item.id) as Future<VirtualClass>);
                 Navigator.push(
                   context,
                   MaterialPageRoute(

@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:suapifba/app/modules/reportcard/reportcard_controller.dart';
 
 class DisciplineItem extends StatelessWidget {
-  final ReportcardController controller;
+  final ReportcardController? controller;
 
   DisciplineItem({this.controller});
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: ListView(
-          children: controller.notes.map(
+          children: controller!.notes!.map(
         (item) {
           return ExpansionTile(
             leading: Icon(Icons.note),
             title: Text(
-              item.disciplina,
+              item.disciplina!,
               style: TextStyle(
                 color: Colors.grey[700],
                 // shadows: [

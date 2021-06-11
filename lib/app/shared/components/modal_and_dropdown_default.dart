@@ -4,10 +4,10 @@ import 'package:suapifba/app/shared/components/dropdownmenu.dart';
 import 'package:suapifba/app/shared/components/modal_progress.dart';
 
 class ModalAndDropdownDefault extends StatelessWidget {
-  String token;
-  dynamic controller;
-  Function getContent;
-  Widget content;
+  final String? token;
+  final dynamic controller;
+  final Function? getContent;
+  final Widget? content;
 
   ModalAndDropdownDefault(
       {this.token, this.controller, this.getContent, this.content});
@@ -36,7 +36,7 @@ class ModalAndDropdownDefault extends StatelessWidget {
                     );
                 },
               ),
-              content
+              content!
             ],
           ),
         ),

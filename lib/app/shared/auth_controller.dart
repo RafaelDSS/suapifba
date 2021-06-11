@@ -23,7 +23,7 @@ abstract class AuthControllerBase with Store {
   validateLogin() async {}
 
   Future<bool> checkLogin() async {
-    List<String> dataLogin = await repositoryStore.getDataLogin();
+    List<String>? dataLogin = await repositoryStore.getDataLogin();
 
     if (dataLogin != null) {
       final matricula = dataLogin[0];
