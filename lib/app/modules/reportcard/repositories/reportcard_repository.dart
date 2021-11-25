@@ -1,30 +1,28 @@
-import 'dart:io';
-import 'package:http/http.dart' as http;
+import 'dart:developer';
 import 'package:suapifba/app/modules/reportcard/models/reportcard_model.dart';
+import 'package:suapifba/app/shared/helpers/custom_dio/custom_dio.dart';
+
+import 'package:suapifba/app/shared/helpers/constants.dart' as config;
 
 class ReportcardRepository {
-  Future fethData(String token, String period) async {
-    http.Response response;
-    final url =
-        'http://suap.ifba.edu.br/api/v2/minhas-informacoes/boletim/$period/';
+  final CustomDio dio;
 
+  ReportcardRepository(this.dio);
+
+  Future<List<ReportCardModel>> fethData(String period) async {
     try {
-      response = await http.get(
-        Uri.parse(url),
-        headers: {
-          HttpHeaders.authorizationHeader: 'JWT $token',
-          HttpHeaders.contentTypeHeader: 'application/json',
-        },
-      );
-    } catch (e) {
-      return null;
-    }
-    final statuscode = response.statusCode;
+      final url = '${config.urlReportCard}$period/';
 
-    if (statuscode == 200) {
-      final data = reportCardFromJson(response.bodyBytes);
-      return data;
+      final response = await dio.client.get(url);
+
+      if (response.statusCode == 200 && response.data.isNotEmpty) {
+        return reportCardModelFromJson(response.data);
+      }
+    } catch (e) {
+      log(e.toString());
     }
-    return null;
+    throw Exception(
+      "Ocorreu um erro ao requisitar o boletim do período selecionado.",
+    );
   }
 }

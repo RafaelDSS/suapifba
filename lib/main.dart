@@ -1,27 +1,10 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'app/app_module.dart';
-import 'app/app_widget.dart';
-import 'app/shared/auth_controller.dart';
-
-class MyHttpOverrides extends HttpOverrides {
-  @override
-  HttpClient createHttpClient(SecurityContext? context) {
-    return super.createHttpClient(context)
-      ..badCertificateCallback =
-          (X509Certificate cert, String host, int port) => true;
-  }
-}
-
-AuthController controller = AuthController();
+import 'package:suapifba/app/app_module.dart';
+import 'package:suapifba/app/app_widget.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  HttpOverrides.global = MyHttpOverrides();
+  await Future.delayed(const Duration(seconds: 1));
 
-  String route = await controller.getRoute();
-
-  runApp(ModularApp(module: AppModule(), child: AppWidget(route)));
+  runApp(ModularApp(module: AppModule(), child: const AppWidget()));
 }

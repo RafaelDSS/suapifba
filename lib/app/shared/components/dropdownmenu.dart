@@ -1,30 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
-import 'package:suapifba/app/modules/home/home_controller.dart';
 import 'package:suapifba/app/shared/models/period_model.dart';
 
 class DropDownMenu extends StatefulWidget {
   final List<Period>? items;
-  final String? title;
-  final Function? onChangeFunc;
-  String? periodValue;
-  final String? token;
+  final Function(String?)? onChanged;
 
-  DropDownMenu({this.items, this.title, this.onChangeFunc, this.token});
+  DropDownMenu({Key? key, this.items, this.onChanged}) : super(key: key);
 
   @override
   _DropDownMenuState createState() => _DropDownMenuState();
 }
 
 class _DropDownMenuState extends State<DropDownMenu> {
+  String? periodValue;
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10.0),
-      child: DropdownButton(
+      padding: const EdgeInsets.all(10.0),
+      child: DropdownButtonFormField(
         iconSize: 26,
-        hint: Text(widget.title!),
-        value: widget.periodValue,
+        hint: periodValue == null
+            ? const Text("Períodos letivos")
+            : Text("$periodValue"),
+        value: periodValue,
         isExpanded: true,
         items: widget.items!.map((period) {
           final semestre = '${period.anoLetivo}/${period.periodoLetivo}';
@@ -35,9 +34,9 @@ class _DropDownMenuState extends State<DropDownMenu> {
         }).toList(),
         onChanged: (String? itemSelected) {
           setState(() {
-            widget.periodValue = itemSelected;
+            periodValue = itemSelected;
           });
-          widget.onChangeFunc!(widget.token, itemSelected);
+          widget.onChanged!(itemSelected);
         },
       ),
     );

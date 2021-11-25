@@ -1,28 +1,27 @@
-import 'dart:io';
-import 'package:http/http.dart' as http;
+import 'dart:developer';
+import 'package:dio/dio.dart';
+import 'package:suapifba/app/shared/helpers/custom_dio/custom_dio.dart';
 import 'package:suapifba/app/shared/models/period_model.dart';
 
+import 'package:suapifba/app/shared/helpers/constants.dart' as config;
+
 class PeriodRepository {
-  Future fethData(String? token) async {
-    http.Response response;
-    final url =
-        'http://suap.ifba.edu.br/api/v2/minhas-informacoes/meus-periodos-letivos/';
+  final CustomDio dio;
 
+  PeriodRepository(this.dio);
+
+  Future<List<Period>> fethData() async {
     try {
-      response = await http.get(
-        Uri.parse(url),
-        headers: {
-          HttpHeaders.authorizationHeader: 'JWT $token',
-          HttpHeaders.contentTypeHeader: 'application/json',
-        },
-      );
-    } catch (e) {
-      return null;
-    }
+      final response = await dio.client.get(config.urlPeriods);
 
-    if (response.statusCode == 200) {
-      final data = periodFromJson(response.body);
-      return data;
+      if (response.statusCode == 200 && response.data.isNotEmpty) {
+        return periodFromJson(response.data);
+      }
+    } on DioError catch (e) {
+      if (e.response?.statusCode == 400 || e.response?.statusCode == 401) {
+        throw Exception("Sessão expirada.");
+      }
     }
+    throw Exception("Ocorreu um erro ao requisitar os períodos letivos.");
   }
 }

@@ -5,30 +5,32 @@ import 'package:url_launcher/url_launcher.dart';
 class MaterialTabView extends StatelessWidget {
   final List<MateriaisDeAula>? materiais;
 
-  MaterialTabView({this.materiais});
+  const MaterialTabView({Key? key, this.materiais}) : super(key: key);
 
   Widget infoCenter() {
-    return Center(
+    return const Center(
       child: Text('Nenhum material cadastrado até o momento.'),
     );
   }
 
   Widget listMateriais() {
-    return ListView(
-      children: materiais!.map(
-        (item) {
-          return ListTile(
-            title: Text(item.descricao!),
-            subtitle: Text(formatter.format(item.dataVinculacao!)),
-            onTap: () async {
-              final url = 'https://suap.ifba.edu.br${item.url}';
-              if (await canLaunch(url)) {
-                await launch(url);
-              }
-            },
-          );
-        },
-      ).toList(),
+    return SingleChildScrollView(
+      child: Column(
+        children: materiais!.map(
+          (item) {
+            return ListTile(
+              title: Text(item.descricao!),
+              subtitle: Text(formatter.format(item.dataVinculacao!)),
+              onTap: () async {
+                final url = 'https://suap.ifba.edu.br${item.url}';
+                if (await canLaunch(url)) {
+                  await launch(url);
+                }
+              },
+            );
+          },
+        ).toList(),
+      ),
     );
   }
 

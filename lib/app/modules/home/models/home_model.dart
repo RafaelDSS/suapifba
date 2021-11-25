@@ -11,16 +11,16 @@ class StudentData {
     nomeUsual = json['nome_usual'];
     urlFoto = json['url_foto_75x100'];
     vinculo =
-        json['vinculo'] != null ? new Vinculo.fromJson(json['vinculo']) : null;
+        json['vinculo'] != null ? Vinculo.fromJson(json['vinculo']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['matricula'] = this.matricula;
-    data['nome_usual'] = this.nomeUsual;
-    data['url_foto_75x100'] = this.urlFoto;
-    if (this.vinculo != null) {
-      data['vinculo'] = this.vinculo!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['matricula'] = matricula;
+    data['nome_usual'] = nomeUsual;
+    data['url_foto_75x100'] = urlFoto;
+    if (vinculo != null) {
+      data['vinculo'] = vinculo!.toJson();
     }
     return data;
   }
@@ -50,12 +50,12 @@ class Vinculo {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['nome'] = this.nome;
-    data['curso'] = this.curso;
-    data['campus'] = this.campus;
-    data['situacao'] = this.situacao;
-    data['cota_mec'] = this.cotaMec;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['nome'] = nome;
+    data['curso'] = curso;
+    data['campus'] = campus;
+    data['situacao'] = situacao;
+    data['cota_mec'] = cotaMec;
     return data;
   }
 }

@@ -1,36 +1,17 @@
 // To parse this JSON data, do
 //
-//     final reportCard = reportCardFromJson(jsonString);
+//     final reportCardModel = reportCardModelFromJson(jsonString);
 
 import 'dart:convert';
 
-import 'dart:typed_data';
+List<ReportCardModel> reportCardModelFromJson(List items) =>
+    List<ReportCardModel>.from(items.map((x) => ReportCardModel.fromJson(x)));
 
-List<ReportCard> reportCardFromJson(Uint8List str) => List<ReportCard>.from(
-    json.decode(utf8.decode(str)).map((x) => ReportCard.fromJson(x)));
-
-String reportCardToJson(List<ReportCard> data) =>
+String reportCardModelToJson(List<ReportCardModel> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class ReportCard {
-  String? codigoDiario;
-  String? disciplina;
-  bool? segundoSemestre;
-  int? cargaHoraria;
-  int? cargaHorariaCumprida;
-  int? numeroFaltas;
-  int? percentualCargaHorariaFrequentada;
-  String? situacao;
-  int? quantidadeAvaliacoes;
-  Nota? notaEtapa1;
-  Nota? notaEtapa2;
-  Nota? notaEtapa3;
-  Nota? notaEtapa4;
-  double? mediaDisciplina;
-  Nota? notaAvaliacaoFinal;
-  double? mediaFinalDisciplina;
-
-  ReportCard({
+class ReportCardModel {
+  ReportCardModel({
     this.codigoDiario,
     this.disciplina,
     this.segundoSemestre,
@@ -49,7 +30,25 @@ class ReportCard {
     this.mediaFinalDisciplina,
   });
 
-  factory ReportCard.fromJson(Map<String, dynamic> json) => ReportCard(
+  String? codigoDiario;
+  String? disciplina;
+  bool? segundoSemestre;
+  int? cargaHoraria;
+  int? cargaHorariaCumprida;
+  int? numeroFaltas;
+  double? percentualCargaHorariaFrequentada;
+  String? situacao;
+  int? quantidadeAvaliacoes;
+  Nota? notaEtapa1;
+  Nota? notaEtapa2;
+  Nota? notaEtapa3;
+  Nota? notaEtapa4;
+  double? mediaDisciplina;
+  Nota? notaAvaliacaoFinal;
+  String? mediaFinalDisciplina;
+
+  factory ReportCardModel.fromJson(Map<String, dynamic> json) =>
+      ReportCardModel(
         codigoDiario: json["codigo_diario"],
         disciplina: json["disciplina"],
         segundoSemestre: json["segundo_semestre"],
@@ -57,7 +56,7 @@ class ReportCard {
         cargaHorariaCumprida: json["carga_horaria_cumprida"],
         numeroFaltas: json["numero_faltas"],
         percentualCargaHorariaFrequentada:
-            json["percentual_carga_horaria_frequentada"],
+            json["percentual_carga_horaria_frequentada"].toDouble(),
         situacao: json["situacao"],
         quantidadeAvaliacoes: json["quantidade_avaliacoes"],
         notaEtapa1: Nota.fromJson(json["nota_etapa_1"]),
@@ -68,9 +67,7 @@ class ReportCard {
             ? 0.0
             : json["media_disciplina"].toDouble(),
         notaAvaliacaoFinal: Nota.fromJson(json["nota_avaliacao_final"]),
-        mediaFinalDisciplina: json["media_final_disciplina"] == null
-            ? null
-            : json["media_final_disciplina"].toDouble(),
+        mediaFinalDisciplina: json["media_final_disciplina"] ?? "0.0",
       );
 
   Map<String, dynamic> toJson() => {
@@ -84,33 +81,32 @@ class ReportCard {
             percentualCargaHorariaFrequentada,
         "situacao": situacao,
         "quantidade_avaliacoes": quantidadeAvaliacoes,
-        "nota_etapa_1": notaEtapa1!.toJson(),
-        "nota_etapa_2": notaEtapa2!.toJson(),
-        "nota_etapa_3": notaEtapa3!.toJson(),
-        "nota_etapa_4": notaEtapa4!.toJson(),
-        "media_disciplina": mediaDisciplina == null ? null : mediaDisciplina,
-        "nota_avaliacao_final": notaAvaliacaoFinal!.toJson(),
-        "media_final_disciplina":
-            mediaFinalDisciplina == null ? null : mediaFinalDisciplina,
+        "nota_etapa_1": notaEtapa1?.toJson(),
+        "nota_etapa_2": notaEtapa2?.toJson(),
+        "nota_etapa_3": notaEtapa3?.toJson(),
+        "nota_etapa_4": notaEtapa4?.toJson(),
+        "media_disciplina": mediaDisciplina ?? 0.0,
+        "nota_avaliacao_final": notaAvaliacaoFinal?.toJson(),
+        "media_final_disciplina": mediaFinalDisciplina ?? "0.0",
       };
 }
 
 class Nota {
-  double? nota;
-  int? faltas;
-
   Nota({
     this.nota,
     this.faltas,
   });
 
+  double? nota;
+  int? faltas;
+
   factory Nota.fromJson(Map<String, dynamic> json) => Nota(
-        nota: json["nota"] == null ? null : json["nota"].toDouble(),
+        nota: json["nota"] == null ? 0.0 : json["nota"].toDouble(),
         faltas: json["faltas"],
       );
 
   Map<String, dynamic> toJson() => {
-        "nota": nota == null ? null : nota,
+        "nota": nota ?? 0.0,
         "faltas": faltas,
       };
 }

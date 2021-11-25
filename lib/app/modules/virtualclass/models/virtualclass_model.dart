@@ -3,18 +3,16 @@
 //     final virtualClass = virtualClassFromJson(jsonString);
 
 import 'dart:convert';
-import 'dart:typed_data';
-
 import 'package:intl/intl.dart';
 
 final formatter = DateFormat('dd/MM/yyyy');
 
-VirtualClass virtualClassFromJson(Uint8List str) =>
-    VirtualClass.fromJson(json.decode(utf8.decode(str)));
+VirtualClassModel virtualClassFromJson(Map<String, dynamic> items) =>
+    VirtualClassModel.fromJson(items);
 
-String virtualClassToJson(VirtualClass data) => json.encode(data.toJson());
+String virtualClassToJson(VirtualClassModel data) => json.encode(data.toJson());
 
-class VirtualClass {
+class VirtualClassModel {
   int? id;
   int? anoLetivo;
   int? periodoLetivo;
@@ -27,7 +25,7 @@ class VirtualClass {
   List<Aula>? aulas;
   List<MateriaisDeAula>? materiaisDeAula;
 
-  VirtualClass({
+  VirtualClassModel({
     this.id,
     this.anoLetivo,
     this.periodoLetivo,
@@ -41,7 +39,8 @@ class VirtualClass {
     this.materiaisDeAula,
   });
 
-  factory VirtualClass.fromJson(Map<String, dynamic> json) => VirtualClass(
+  factory VirtualClassModel.fromJson(Map<String, dynamic> json) =>
+      VirtualClassModel(
         id: json["id"],
         anoLetivo: json["ano_letivo"],
         periodoLetivo: json["periodo_letivo"],

@@ -1,24 +1,20 @@
+import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:suapifba/app/modules/home/home_controller.dart';
-import 'package:suapifba/app/modules/home/home_module.dart';
-import 'package:suapifba/app/modules/home/repositories/home_repository.dart';
-import 'package:suapifba/app/shared/repositories/login_repository.dart';
-
-import 'login_controller.dart';
-import 'login_page.dart';
+import 'package:suapifba/app/modules/login/stores/login_store.dart';
+import 'package:suapifba/app/shared/repositories/localstorage_repository.dart';
+import 'package:suapifba/app/modules/login/repositories/login_repository.dart';
+import 'package:suapifba/app/modules/login/login_page.dart';
 
 class LoginModule extends Module {
   @override
   final List<Bind> binds = [
-    Bind((i) => LoginController(i.get<LoginRepository>())),
-    Bind((i) => LoginRepository()),
-    Bind((i) => HomeRepository()),
-    Bind((i) => HomeController(i.get<HomeRepository>())),
+    Bind((i) => LocalStorageRepository()),
+    Bind((i) => LoginRepository(i.get(), Dio())),
+    Bind((i) => LoginStore(i.get(), i.get()))
   ];
 
   @override
   final List<ModularRoute> routes = [
-    ChildRoute('/', child: (_, args) => Login()),
-    // Router('/home', module: HomeModule())
+    ChildRoute('/', child: (_, args) => const Login()),
   ];
 }

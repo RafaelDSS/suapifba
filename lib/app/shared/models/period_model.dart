@@ -4,8 +4,8 @@
 
 import 'dart:convert';
 
-List<Period> periodFromJson(String str) =>
-    List<Period>.from(json.decode(str).map((x) => Period.fromJson(x)));
+List<Period> periodFromJson(List items) =>
+    List<Period>.from(items.map((x) => Period.fromJson(x)));
 
 String periodToJson(List<Period> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));

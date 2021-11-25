@@ -5,9 +5,9 @@ import 'package:suapifba/app/modules/virtualclass/components/participantestab.da
 import 'package:suapifba/app/modules/virtualclass/models/virtualclass_model.dart';
 
 class TabBarViewClass extends StatefulWidget {
-  final VirtualClass? virtualclass;
+  final VirtualClassModel? virtualclass;
 
-  TabBarViewClass({this.virtualclass});
+  const TabBarViewClass({Key? key, this.virtualclass}) : super(key: key);
 
   @override
   _TabBarViewClassState createState() => _TabBarViewClassState();
@@ -20,9 +20,13 @@ class _TabBarViewClassState extends State<TabBarViewClass> {
       length: 3,
       child: Scaffold(
         appBar: AppBar(
-          title: Text(
-              'Turma Virtual - ${widget.virtualclass!.componenteCurricular!.split(' - ')[0]}'),
-          bottom: TabBar(
+          title: Tooltip(
+            triggerMode: TooltipTriggerMode.tap,
+            message: widget.virtualclass!.componenteCurricular!.split(' - ')[1],
+            child: Text(
+                'Turma Virtual - ${widget.virtualclass!.componenteCurricular!.split(' - ')[0]}'),
+          ),
+          bottom: const TabBar(
             tabs: <Widget>[
               Tab(
                 text: 'Participantes',
