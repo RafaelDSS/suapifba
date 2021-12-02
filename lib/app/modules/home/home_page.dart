@@ -32,15 +32,7 @@ class _HomePageState extends State<HomePage> {
         });
       },
       onError: (error) async {
-        // Verifica se há conexão de internet no device
-        try {
-          final result = await InternetAddress.lookup('example.com');
-          if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
-            Modular.to.navigate("/login/");
-          }
-        } on SocketException catch (e) {
-          manageAuthStore.update(true, force: true);
-        }
+        Modular.to.navigate("/login/");
       },
     );
   }

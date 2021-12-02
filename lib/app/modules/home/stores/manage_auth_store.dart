@@ -12,6 +12,9 @@ class ManageAuthStore extends StreamStore<Exception, bool> {
     execute(
       () async {
         final acessToken = await localStorage.getToken();
+        if (acessToken == null) {
+          throw Exception("Usuário não tem nenhuma sessão ativa.");
+        }
         return manageAuthRepository.verifyToken(acessToken);
       },
     );

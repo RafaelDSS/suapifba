@@ -7,7 +7,7 @@ import 'package:suapifba/app/modules/home/stores/manage_auth_store.dart';
 class HomeModule extends Module {
   @override
   final List<Bind> binds = [
-    Bind((i) => ManageAuthRepository(i.get(), Dio())),
+    Bind((i) => ManageAuthRepository(Dio())),
     Bind((i) => ManageAuthStore(i.get(), i.get()))
   ];
 

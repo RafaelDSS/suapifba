@@ -9,7 +9,7 @@ class LoginModule extends Module {
   @override
   final List<Bind> binds = [
     Bind((i) => LocalStorageRepository()),
-    Bind((i) => LoginRepository(i.get(), Dio())),
+    Bind((i) => LoginRepository(Dio())),
     Bind((i) => LoginStore(i.get(), i.get()))
   ];
 

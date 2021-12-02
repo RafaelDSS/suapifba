@@ -1,15 +1,12 @@
-import 'dart:developer';
 import 'dart:io';
 import 'package:dio/dio.dart';
-import 'package:suapifba/app/shared/repositories/localstorage_repository.dart';
 
 import 'package:suapifba/app/shared/helpers/constants.dart' as config;
 
 class ManageAuthRepository {
-  final LocalStorageRepository localStorage;
   final Dio dio;
 
-  ManageAuthRepository(this.localStorage, this.dio);
+  ManageAuthRepository(this.dio);
 
   Future<bool> verifyToken(String? token) async {
     try {
@@ -29,8 +26,10 @@ class ManageAuthRepository {
       if (response.statusCode == 200 && response.data.isNotEmpty) {
         return true;
       }
-    } catch (e) {
-      log(e.toString());
+    } on DioError catch (e) {
+      if (e.response?.statusCode == 400) {
+        return true;
+      }
     }
     throw Exception("Ocorreu um erro ao verificar sua sessão.");
   }

@@ -1,15 +1,12 @@
-import 'dart:developer';
 import 'dart:io';
 import 'package:dio/dio.dart';
-import 'package:suapifba/app/shared/repositories/localstorage_repository.dart';
 
 import 'package:suapifba/app/shared/helpers/constants.dart' as config;
 
 class LoginRepository {
-  final LocalStorageRepository localStorage;
   final Dio dio;
 
-  LoginRepository(this.localStorage, this.dio);
+  LoginRepository(this.dio);
 
   Future<String> fethToken(matricula, password) async {
     try {
