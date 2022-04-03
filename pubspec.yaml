@@ -41,6 +41,7 @@ dependencies:
   url_launcher: ^6.0.15
   flutter_triple: ^1.2.5
   dio: ^4.0.4
+  flutter_svg: ^1.0.3
 
 dev_dependencies:
   flutter_test:
@@ -96,6 +97,10 @@ flutter:
   # see https://flutter.dev/custom-fonts/#from-packages
   assets:
     - assets/images/logo-login.png
+    - assets/images/undraw_time_management.svg
+    - assets/images/undraw_news.svg
+    - assets/images/undraw_online_friends.svg
+    - assets/images/undraw_report.svg
 
   fonts:
     - family: Poppins1

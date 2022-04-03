@@ -1,12 +1,9 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_triple/flutter_triple.dart';
 import 'package:suapifba/app/modules/home/stores/manage_auth_store.dart';
 import 'package:suapifba/app/shared/components/appbar_custom.dart';
-
-import 'dart:ui' as ui;
+import 'package:flutter_svg/flutter_svg.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -46,34 +43,37 @@ class _HomePageState extends State<HomePage> {
 
   Widget gridMenuItem(
       {required String title,
-      required IconData icon,
+      required String imageFileName,
       required Function onTap}) {
     return Card(
       margin: const EdgeInsets.all(10),
       elevation: 2,
       child: InkWell(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+        child: Stack(
+          alignment: Alignment.center,
           children: [
-            ShaderMask(
-              blendMode: BlendMode.srcIn,
-              shaderCallback: (Rect bounds) {
-                return ui.Gradient.linear(
-                  const Offset(4.0, 24.0),
-                  const Offset(24.0, 4.0),
-                  [
-                    Colors.green,
-                    Colors.greenAccent,
-                  ],
-                );
-              },
-              child: Icon(icon, size: 30),
+            Padding(
+              padding: const EdgeInsets.all(18.0),
+              child: SvgPicture.asset(
+                "assets/images/$imageFileName",
+                color: Colors.white.withOpacity(0.8),
+                colorBlendMode: BlendMode.modulate,
+              ),
             ),
-            Text(
-              title,
-              textAlign: TextAlign.center,
-              maxLines: 3,
-              style: const TextStyle(color: Colors.black, fontSize: 14),
+            Positioned(
+              bottom: 5,
+              left: 2,
+              right: 2,
+              child: Text(
+                title,
+                textAlign: TextAlign.center,
+                maxLines: 3,
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
           ],
         ),
@@ -97,28 +97,28 @@ class _HomePageState extends State<HomePage> {
               children: [
                 gridMenuItem(
                   title: "Turmas Virtuais",
-                  icon: Icons.video_label,
+                  imageFileName: "undraw_online_friends.svg",
                   onTap: () {
                     Modular.to.pushNamed("/virtualclass/");
                   },
                 ),
                 gridMenuItem(
                   title: "Horários de Aula",
-                  icon: Icons.access_time,
+                  imageFileName: "undraw_time_management.svg",
                   onTap: () {
                     Modular.to.pushNamed("/hour/");
                   },
                 ),
                 gridMenuItem(
                   title: "Notas e Faltas",
-                  icon: Icons.assessment,
+                  imageFileName: "undraw_report.svg",
                   onTap: () {
                     Modular.to.pushNamed("/reportcard/");
                   },
                 ),
                 gridMenuItem(
                   title: "Últimas Notícias",
-                  icon: Icons.feed,
+                  imageFileName: "undraw_news.svg",
                   onTap: () {
                     Modular.to.pushNamed("/news/");
                   },
