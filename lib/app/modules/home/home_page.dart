@@ -53,7 +53,7 @@ class _HomePageState extends State<HomePage> {
       elevation: 2,
       child: InkWell(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             ShaderMask(
               blendMode: BlendMode.srcIn,
@@ -67,13 +67,12 @@ class _HomePageState extends State<HomePage> {
                   ],
                 );
               },
-              child: Icon(icon, size: 40),
-            ),
-            const SizedBox(
-              height: 18,
+              child: Icon(icon, size: 30),
             ),
             Text(
               title,
+              textAlign: TextAlign.center,
+              maxLines: 3,
               style: const TextStyle(color: Colors.black, fontSize: 14),
             ),
           ],
@@ -93,7 +92,7 @@ class _HomePageState extends State<HomePage> {
           if (triple.state) {
             return GridView.count(
               physics: const BouncingScrollPhysics(),
-              padding: const EdgeInsets.symmetric(vertical: 90, horizontal: 12),
+              padding: const EdgeInsets.symmetric(vertical: 90, horizontal: 5),
               crossAxisCount: 2,
               children: [
                 gridMenuItem(
