@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:suapifba/app/modules/hour/models/hour_model.dart';
 
 class TooltipShapeBorder extends ShapeBorder {
   final double arrowWidth;
@@ -41,8 +42,8 @@ class TooltipShapeBorder extends ShapeBorder {
 }
 
 class HourTable extends StatelessWidget {
-  final List<List> hour;
-  const HourTable({Key? key, required this.hour}) : super(key: key);
+  final HourModel hourModel;
+  const HourTable({Key? key, required this.hourModel}) : super(key: key);
 
   Widget tableTitleBar(String text) {
     return Text(
@@ -74,7 +75,7 @@ class HourTable extends StatelessWidget {
       child: DataTable(
         columns: [
           DataColumn(
-            label: tableTitleBar('VESPERTINO'),
+            label: tableTitleBar(hourModel.turno),
           ),
           DataColumn(label: tableTitleBar('Segunda')),
           DataColumn(label: tableTitleBar('Terça')),
@@ -83,7 +84,7 @@ class HourTable extends StatelessWidget {
           DataColumn(label: tableTitleBar('Sexta')),
           DataColumn(label: tableTitleBar('')),
         ],
-        rows: hour.map((item) {
+        rows: hourModel.hours.map((item) {
           return DataRow(cells: [
             DataCell(
               Text(

@@ -42,7 +42,7 @@ class _NewsPageState extends State<NewsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBarDefault(title: "Notícias"),
+      appBar: appBarDefault(title: "Notícias - Irecê"),
       body: Stack(
         children: [
           ScopedBuilder<NewsStore, Exception, List<NewsModel>>(

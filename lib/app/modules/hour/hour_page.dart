@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_triple/flutter_triple.dart';
 import 'package:suapifba/app/modules/hour/components/hour_table.dart';
+import 'package:suapifba/app/modules/hour/models/hour_model.dart';
 import 'package:suapifba/app/modules/hour/stores/hour_store.dart';
 import 'package:suapifba/app/shared/components/appbar_custom.dart';
 import 'package:suapifba/app/shared/components/dropdownmenu.dart';
@@ -76,10 +77,11 @@ class _HourPageState extends State<HourPage> {
                 ),
                 onError: (context, error) => Container(),
               ),
-              ScopedBuilder<HourStore, Exception, List<List>>(
+              ScopedBuilder<HourStore, Exception, HourModel>(
                 store: hourStore,
-                onState: (context, state) =>
-                    state.isEmpty ? Container() : HourTable(hour: state),
+                onState: (context, state) => state.hours.isEmpty
+                    ? Container()
+                    : HourTable(hourModel: state),
                 onError: (context, error) => Container(),
               )
             ],
