@@ -27,9 +27,10 @@ class _TabBarViewClassState extends State<TabBarViewClass> {
                 'Turma Virtual - ${widget.virtualclass!.componenteCurricular!.split(' - ')[0]}'),
           ),
           bottom: const TabBar(
+            isScrollable: true,
             tabs: <Widget>[
-              Tab(
-                text: 'Participantes',
+              Text(
+                'Participantes',
               ),
               Tab(
                 text: 'Aulas',

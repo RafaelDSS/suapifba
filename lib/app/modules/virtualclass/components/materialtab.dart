@@ -9,7 +9,10 @@ class MaterialTabView extends StatelessWidget {
 
   Widget infoCenter() {
     return const Center(
-      child: Text('Nenhum material cadastrado até o momento.'),
+      child: Text(
+        'Nenhum material cadastrado até o momento.',
+        textAlign: TextAlign.center,
+      ),
     );
   }
 

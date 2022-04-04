@@ -44,22 +44,23 @@ class ParticipantesTabView extends StatelessWidget {
                     ),
                   ),
                 ),
-                subtitle: Row(
-                  children: <Widget>[
-                    const Text(
-                      'Matricula:',
-                      style: TextStyle(
-                        color: Colors.black87,
-                        fontSize: 16,
-                      ),
+                subtitle: RichText(
+                  text: TextSpan(
+                    text: 'Matricula: ',
+                    style: const TextStyle(
+                      color: Colors.black87,
+                      fontSize: 16,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 5.0),
-                      child: Text(
-                        item.matricula!,
-                      ),
-                    ),
-                  ],
+                    children: [
+                      TextSpan(
+                        text: item.matricula!,
+                        style: TextStyle(
+                          color: Colors.grey[600],
+                          fontSize: 15,
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
             );

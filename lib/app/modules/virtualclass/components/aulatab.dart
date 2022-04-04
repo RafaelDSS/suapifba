@@ -23,7 +23,10 @@ class AulaTabView extends StatelessWidget {
 
   Widget infoCenter() {
     return const Center(
-      child: Text('Nenhuma aula registrada até o momento.'),
+      child: Text(
+        'Nenhuma aula registrada até o momento.',
+        textAlign: TextAlign.center,
+      ),
     );
   }
 
