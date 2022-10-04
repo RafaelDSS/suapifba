@@ -6,14 +6,15 @@ class AppWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'SUAP IFBA',
       theme: ThemeData(
         primarySwatch: Colors.green,
         fontFamily: "Poppins1",
       ),
-      initialRoute: "/home/",
-    ).modular();
+      routeInformationParser: Modular.routeInformationParser,
+      routerDelegate: Modular.routerDelegate,
+    );
   }
 }

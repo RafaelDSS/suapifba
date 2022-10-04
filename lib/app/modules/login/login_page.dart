@@ -27,7 +27,7 @@ class _LoginState extends State<Login> {
     super.initState();
 
     _disposerLogin = loginStore.observer(onState: (state) {
-      Modular.to.navigate("/home/");
+      Modular.to.navigate("/");
     }, onError: (error) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(

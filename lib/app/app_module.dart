@@ -18,7 +18,7 @@ class AppModule extends Module {
 
   @override
   final List<ModularRoute> routes = [
-    ModuleRoute('/home/', module: HomeModule()),
+    ModuleRoute('/', module: HomeModule()),
     ModuleRoute('/login/', module: LoginModule()),
     ModuleRoute('/reportcard/', module: ReportCardModule()),
     ModuleRoute('/virtualclass/', module: VirtualClassModule()),
