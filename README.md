@@ -1,6 +1,6 @@
 # SUAP IFBA
 
-App desenvolvido em Flutter que faz uso da API do SUAP.
+App desenvolvido em Flutter baseado na API do SUAP.
 
 
 ### Features.
