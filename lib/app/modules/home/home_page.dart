@@ -4,6 +4,7 @@ import 'package:flutter_triple/flutter_triple.dart';
 import 'package:suapifba/app/modules/home/stores/manage_auth_store.dart';
 import 'package:suapifba/app/shared/components/appbar_custom.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:suapifba/app/shared/components/snackbar_error.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -29,6 +30,16 @@ class _HomePageState extends State<HomePage> {
         });
       },
       onError: (error) async {
+        String message = manageAuthStore.error.toString();
+
+        if (!message.contains("primeiro_acesso")) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              backgroundColor: Colors.red,
+              content: Text(message),
+            ),
+          );
+        }
         Modular.to.navigate("/login/");
       },
     );
