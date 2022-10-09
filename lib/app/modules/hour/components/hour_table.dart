@@ -53,17 +53,31 @@ class HourTable extends StatelessWidget {
     );
   }
 
+  Widget siglaStyled(String sigla) {
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        color: Colors.green,
+      ),
+      child: Text(
+        sigla,
+        style: const TextStyle(color: Colors.white),
+      ),
+    );
+  }
+
   DataCell courseCell({required String sigla, required String descricao}) {
     return DataCell(
       Tooltip(
         decoration: ShapeDecoration(
-          color: Colors.grey[700],
+          color: Colors.grey[600],
           shape: const TooltipShapeBorder(),
         ),
         preferBelow: false,
         triggerMode: TooltipTriggerMode.tap,
         message: descricao,
-        child: Text(sigla),
+        child: sigla.isEmpty ? const Text("") : siglaStyled(sigla),
       ),
     );
   }
