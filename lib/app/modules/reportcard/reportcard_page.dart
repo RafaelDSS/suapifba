@@ -7,6 +7,7 @@ import 'package:suapifba/app/modules/reportcard/stores/reportcard_store.dart';
 import 'package:suapifba/app/shared/components/appbar_custom.dart';
 import 'package:suapifba/app/shared/components/dropdownmenu.dart';
 import 'package:suapifba/app/shared/components/modal_progress.dart';
+import 'package:suapifba/app/shared/helpers/advertisement.dart';
 import 'package:suapifba/app/shared/models/period_model.dart';
 import 'package:suapifba/app/shared/helpers/store_observer.dart';
 import 'package:suapifba/app/shared/stores/period_store.dart';
@@ -77,6 +78,7 @@ class _ReportCardState extends State<ReportCard> {
                 onError: (context, error) => Container(),
                 onLoading: (context) => Container(),
               ),
+              const NativeAdItem(),
               ScopedBuilder<ReportCardStore, Exception, List<ReportCardModel>>(
                 store: reportcardStore,
                 onState: (context, state) => Courses(

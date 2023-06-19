@@ -9,6 +9,7 @@ import 'package:suapifba/app/modules/virtualclass/stores/vistualclass_store.dart
 import 'package:suapifba/app/shared/components/appbar_custom.dart';
 import 'package:suapifba/app/shared/components/dropdownmenu.dart';
 import 'package:suapifba/app/shared/components/modal_progress.dart';
+import 'package:suapifba/app/shared/helpers/advertisement.dart';
 
 import 'package:suapifba/app/shared/models/period_model.dart';
 import 'package:suapifba/app/shared/helpers/store_observer.dart';
@@ -93,6 +94,7 @@ class _VirtualClassPageState extends State<VirtualClassPage> {
                 ),
                 onLoading: (context) => Container(),
               ),
+              const NativeAdItem(),
               ScopedBuilder<VirtualClassesStore, Exception,
                   List<VirtualClassesModel>>(
                 store: virtualClassesStore,

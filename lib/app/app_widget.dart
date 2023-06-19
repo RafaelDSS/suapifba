@@ -8,7 +8,7 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      title: 'SUAP IFBA',
+      title: 'IFBA Mobile',
       theme: ThemeData(
         primarySwatch: Colors.green,
         fontFamily: "Poppins1",
