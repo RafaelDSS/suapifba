@@ -8,7 +8,7 @@
 PRODUCT_NAME = suapifba
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = com.example.suapifba
+PRODUCT_BUNDLE_IDENTIFIER = com.br.suapifba.suapifba
 
 // The copyright displayed in application information
-PRODUCT_COPYRIGHT = Copyright © 2021 com.example. All rights reserved.
+PRODUCT_COPYRIGHT = Copyright © 2023 com.br.suapifba. All rights reserved.
